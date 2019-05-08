@@ -37,8 +37,11 @@ Only **POST** HTTP requests work with **API**. Examples of requests can be viewe
 -------------------------------------------------------------
 
 server:port/document/create - creates a document and gives write permission to a user
+
 server:port/document/perm - gives read & write permission to indicated user
+
 server:port/document/sign - adds a user sign in db
+
 server:port/document/list - lists all documents of a user
 
 ## ETC
