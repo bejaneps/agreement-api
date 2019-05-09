@@ -5,7 +5,7 @@ import (
 
 	"github.com/jinzhu/gorm"
 
-	"github.com/bejaneps/docs-agreement-api/backend/auth"
+	"github.com/bejaneps/agreement-api/auth"
 )
 
 // Document struct represents a document of google drive, with it's owners and permissions

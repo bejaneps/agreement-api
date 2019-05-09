@@ -7,7 +7,7 @@ import (
 
 	"google.golang.org/api/drive/v2"
 
-	"github.com/bejaneps/docs-agreement-api/backend/crud"
+	"github.com/bejaneps/agreement-api/crud"
 	"github.com/gin-gonic/gin"
 )
 
@@ -43,7 +43,7 @@ func errorHandler(err error, errCode uint, c *gin.Context) {
 	})
 }
 
-// DocCreateHandler handles upcoming GET requests when create document button pressed in client software
+// DocCreateHandler handles upcoming post requests for creation of document
 func DocCreateHandler(c *gin.Context) {
 	/* 1. Get user and document data and unpack it to variable */
 	usr := &userCreateDoc{}
@@ -116,7 +116,7 @@ func DocPermHandler(c *gin.Context) {
 	})
 }
 
-// DocSignHandler removes write permission from a user, when he presses sign button
+// DocSignHandler removes write permission from a user
 func DocSignHandler(c *gin.Context) {
 	usrPerm := &userPermission{}
 
@@ -206,7 +206,7 @@ func DocSignHandler(c *gin.Context) {
 	return
 }
 
-// DocListHandler sents the list of documents that belong to user
+// DocListHandler sends the list of documents that belong to user
 func DocListHandler(c *gin.Context) {
 	uEmail := &userEmail{}
 

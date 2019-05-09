@@ -1,0 +1,174 @@
+{
+	"item": [
+		{
+			"name": "CreateDocument",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"some@email\",\n\t\"doc_title\": \"title\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5050/document/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5050",
+					"path": [
+						"document",
+						"create"
+					]
+				},
+				"description": "GET request for creation of document"
+			},
+			"response": []
+		},
+		{
+			"name": "DocumentList",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"some@email\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5050/document/list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5050",
+					"path": [
+						"document",
+						"list"
+					]
+				},
+				"description": "Request a list of documents of a user"
+			},
+			"response": []
+		},
+		{
+			"name": "DocUserPerm",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"some@email\",\n\t\"doc_id\": \"n12n3n123nnsd\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5050/document/perm",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5050",
+					"path": [
+						"document",
+						"perm"
+					]
+				},
+				"description": "Give read and write permission on a document to a user"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateTemplate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"some@email\",\n\t\"template_id\": \"dasdasdasdasda\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5050/document/create",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5050",
+					"path": [
+						"document",
+						"create"
+					]
+				},
+				"description": "Create a document with contents of template"
+			},
+			"response": []
+		},
+		{
+			"name": "AddUserSign",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"some@email\",\n\t\"doc_id\": \"dasdasdasdasd\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5050/document/sign",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5050",
+					"path": [
+						"document",
+						"sign"
+					]
+				},
+				"description": "Adds user sign to DB and gives read perm of document to him"
+			},
+			"response": []
+		}
+	]
+}

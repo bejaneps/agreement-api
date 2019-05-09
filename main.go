@@ -10,7 +10,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/bejaneps/docs-agreement-api/backend/routers"
+	"github.com/bejaneps/agreement-api/auth"
+
+	"github.com/bejaneps/agreement-api/routers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,8 +22,17 @@ var (
 )
 
 var port = flag.String("port", ":5050", "-port :portnumber")
+var googleAccount = flag.String("account", "", "-account @email")
 
 func init() {
+	flag.Parse()
+
+	if *googleAccount == "" {
+		log.Fatal("google account can't be empty")
+	}
+
+	auth.GoogleAccount = *googleAccount
+
 	var err error
 
 	logger, err = os.Create("log.txt")
@@ -38,8 +49,6 @@ func init() {
 }
 
 func main() {
-	flag.Parse()
-
 	router := gin.New()
 	router.Use(gin.LoggerWithWriter(logger), gin.RecoveryWithWriter(recovery))
 

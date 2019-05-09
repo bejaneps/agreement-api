@@ -24,6 +24,9 @@ var (
 	credentials = os.Getenv("SECRET_CREDENTIALS")
 	database    = os.Getenv("DATABASE_FILE")
 	config      *oauth2.Config
+
+	//GoogleAccount is user google account for saving agreements
+	GoogleAccount string
 )
 
 // GetClient returns a google client instance

@@ -3,7 +3,7 @@ package crud
 import (
 	"time"
 
-	"github.com/bejaneps/docs-agreement-api/backend/auth"
+	"github.com/bejaneps/agreement-api/auth"
 	"google.golang.org/api/drive/v2"
 )
 
@@ -32,9 +32,9 @@ func CreateTemplate(email, template string) (file *drive.File, err error) {
 		return nil, err
 	}
 
-	//giving ownership to main gdrive account
+	//giving ownership to main Google account
 	_, err = srv.Permissions.Insert(file.Id, &drive.Permission{
-		Value: "gdocs.agreement@gmail.com",
+		Value: auth.GoogleAccount,
 		Role:  "owner",
 		Type:  "user",
 	}).SendNotificationEmails(false).Do()

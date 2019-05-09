@@ -5,7 +5,9 @@
 -------------------------------------------------------------
 
 Using this API you can create agreement between 2 users. API uses **Google Docs** and **Drive** **APIs**. To work with this API you need ***Google service account*** and enabled **Google Docs API** and **Google Drive API**. API can be used as a backend for applications or CLI tools. For the purpose of simplicity SQLITE3 db system is used. 
+
 **Routing** logic is managed using [Gin](https://github.com/gin-gonic/gin) library. **Database** logic is managed using [GORM](https://github.com/jinzhu/gorm/) library.
+
 Only **POST** HTTP requests work with **API**. Examples of requests can be viewed in ***example-requests.json*** file. Requests should be sent in json format, so responses are in json format too.
 
 ## Build
@@ -30,7 +32,7 @@ Only **POST** HTTP requests work with **API**. Examples of requests can be viewe
    - SECRET_CREDENTIALS: should be a path to your *credentials.json* file (service account key). **E.g** /temp/example/credentials.json
    - DATABASE_FILE: should be a path to your database file (sqlite .db file). **E.g** /temp/example/docs.db
 4. Build a project by using go tools: ***go build***
-5. (Optional) Run an executable with -port argument (default port is 5050).
+5. Run an executable with ***-account yourgoogle@email*** argument and (optional) ***-port :1234*** argument.
 -------------------------------------------------------------
 
 ## Routes
