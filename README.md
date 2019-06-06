@@ -46,6 +46,8 @@ server:port/document/sign - adds a user sign in db
 
 server:port/document/list - lists all documents of a user
 
+server:port/template/create - to create a document from template
+
 ## ETC
 -------------------------------------------------------------
 API will have more features and more convenient interface to work with. Currently it's in ***alpha*** version. If you want to collaborate or to help improve API, please create an ***issue*** or ***pull request***.
