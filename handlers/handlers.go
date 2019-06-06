@@ -1,5 +1,5 @@
-// Package routers implements all routers needed for client's application requests
-package routers
+// Package handlers implements all routers needed for client's application requests
+package handlers
 
 import (
 	"fmt"

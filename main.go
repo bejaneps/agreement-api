@@ -12,7 +12,7 @@ import (
 
 	"github.com/bejaneps/agreement-api/auth"
 
-	"github.com/bejaneps/agreement-api/routers"
+	"github.com/bejaneps/agreement-api/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -52,10 +52,11 @@ func main() {
 	router := gin.New()
 	router.Use(gin.LoggerWithWriter(logger), gin.RecoveryWithWriter(recovery))
 
-	router.POST("/document/create", routers.DocCreateHandler)
-	router.POST("/document/perm", routers.DocPermHandler)
-	router.POST("/document/sign", routers.DocSignHandler)
-	router.POST("/document/list", routers.DocListHandler)
+	router.POST("/document/create", handlers.DocCreateHandler)
+	router.POST("/document/perm", handlers.DocPermHandler)
+	router.POST("/document/sign", handlers.DocSignHandler)
+	router.POST("/document/list", handlers.DocListHandler)
+	router.POST("/template/create", handlers.TemplateCreateHandler)
 
 	var server = &http.Server{
 		Addr:    *port,
