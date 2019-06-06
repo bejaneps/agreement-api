@@ -1,6 +1,7 @@
 package crud
 
 import (
+	"strings"
 	"time"
 
 	"github.com/jinzhu/gorm"
@@ -19,6 +20,19 @@ type Document struct {
 	Signed2     int    `json:"signed2" gorm:"type: INTEGER"`
 	DateSigned1 string `json:"date_signed1" gorm:"type: TEXT"`
 	DateSigned2 string `json:"date_signed2" gorm:"type: TEXT"`
+}
+
+func filterLocalTime() string {
+	now := time.Now().Add(time.Hour * (-3)).Format(time.RFC3339)
+
+	if i := strings.Index(now, "+"); i != -1 {
+		now = now[:i]
+	} else {
+		i = strings.Index(now, "-")
+		now = now[:i]
+	}
+
+	return now
 }
 
 // GetUserDoc returns a UserDoc structure with a document info from DB
@@ -103,7 +117,7 @@ func AddUserSign(email, fileID string) (*Document, error) {
 	if temp.Owner1 == email {
 		err := DB.Table("documents").Where("doc_id = ?", fileID).Updates(map[string]interface{}{
 			"signed1":      1,
-			"date_signed1": time.Now().Format(time.RFC3339),
+			"date_signed1": filterLocalTime(),
 		}).Error
 		if err != nil {
 			return nil, err
@@ -118,7 +132,7 @@ func AddUserSign(email, fileID string) (*Document, error) {
 	} else if temp.Owner2 == email {
 		err := DB.Table("documents").Where("doc_id = ?", fileID).Updates(map[string]interface{}{
 			"signed2":      1,
-			"date_signed2": time.Now().Format(time.RFC3339),
+			"date_signed2": filterLocalTime(),
 		}).Error
 		if err != nil {
 			return nil, err
@@ -146,16 +160,16 @@ func RemoveUserSign(email, fileID string) (*Document, error) {
 
 	if doc.Owner1 == email {
 		err := DB.Table("documents").Where("doc_id = ?", fileID).Updates(map[string]interface{}{
-			"signed2":      0,
-			"date_signed2": "",
+			"signed1":      0,
+			"date_signed1": "",
 		}).Error
 		if err != nil {
 			return nil, err
 		}
 	} else {
 		err := DB.Table("documents").Where("doc_id = ?", fileID).Updates(map[string]interface{}{
-			"signed1":       0,
-			"date_signed1 ": "",
+			"signed2":      0,
+			"date_signed2": "",
 		}).Error
 		if err != nil {
 			return nil, err
